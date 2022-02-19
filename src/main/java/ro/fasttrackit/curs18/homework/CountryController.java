@@ -33,7 +33,7 @@ public class CountryController {
         return countryService.getPopulationOfACountry(countryId);
     }
 
-    @GetMapping("/continents/{continentName}/countries")
+    @GetMapping("/continents/{continentName}/allCountries")
     List<Country> getCountriesInContinent(@PathVariable String continentName) {
         return countryService.getCountriesInContinent(continentName);
     }
@@ -49,10 +49,10 @@ public class CountryController {
         return countryService.getCountriesInContinentWithMinPopulation(continentName, minPopulation);
     }
 
-    @GetMapping("/countries")
-    List<Country> getCountriesWithNeighbourXButNotY(@RequestParam String neighbourX,
-                                                    @RequestParam String neighbourY) {
-        return countryService.getCountriesThatHaveNeighbourXButNotY(neighbourX, neighbourY);
+    @GetMapping("/countriesNeighbours")
+    List<Country> getCountriesWithNeighbourXButNotY(@RequestParam String includeNeighbour,
+                                                    @RequestParam String excludeNeighbour) {
+        return countryService.getCountriesThatHaveNeighbourXButNotY(includeNeighbour, excludeNeighbour);
     }
 
 }
